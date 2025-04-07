@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-ART | Quality Frames & Art</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d4739;
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 20px;
+            color: #2d4739;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .gallery {
+            position: relative;
+        }
+        
+        .testimonial {
+            position: relative;
+            margin: 20px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .quote-icon {
+            font-size: 36px;
+            color: #2d4739;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            font-style: italic;
+            color: #666;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+        
+        .pagination-dot.active {
+            background-color: #2d4739;
+        }
+        
+        .cta-button {
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            margin: 30px auto;
+            padding: 15px;
+            background-color: #2d4739;
+            color: white;
+            text-align: center;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">B - ART</div>
+        <div class="nav-icons">
+            <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+    
+    <!-- Gallery/Hero Image -->
+    <div class="gallery">
+        <img src="/api/placeholder/600/500" alt="Living room with framed art" class="hero-image">
+    </div>
+    
+    <!-- Testimonial -->
+    <div class="testimonial">
+        <span class="quote-icon">&ldquo;</span>
+        <p class="testimonial-text">Really liked the quality of the work! We periodically order frames for paintings here, and the staff always helps us find the right solution.</p>
+        <p class="testimonial-author">- Dmitriy Vik</p>
+    </div>
+    
+    <!-- Pagination Dots -->
+    <div class="pagination">
+        <span class="pagination-dot active"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+    </div>
+    
+    <!-- CTA Button -->
+    <a href="#" class="cta-button">Start selecting a frame</a>
+    
+    <script>
+        // JavaScript could be added here for interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // For example, a slider for testimonials
+            const dots = document.querySelectorAll('.pagination-dot');
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    document.querySelector('.pagination-dot.active').classList.remove('active');
+                    dot.classList.add('active');
+                    // In a real implementation, you would switch testimonials here
+                });
+            });
+        });
+    </script>
+</body>
+</html>

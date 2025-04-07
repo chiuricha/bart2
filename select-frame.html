@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-ART | Select Frame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: white;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        .artwork-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .framed-artwork {
+            width: 80%;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .frame {
+            width: 100%;
+            background-color: #333;
+            padding: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blue-border {
+            border: 3px solid #4a90e2;
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            position: absolute;
+            top: 23px;
+            left: 23px;
+            pointer-events: none;
+        }
+        
+        .artwork {
+            width: 100%;
+            display: block;
+        }
+        
+        .artwork-info {
+            text-align: center;
+            margin: 20px 0;
+            color: #2d4739;
+            font-size: 18px;
+        }
+        
+        .frame-options {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .frame-option {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            cursor: pointer;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .frame-option img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .frame-name {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .selected-indicator {
+            height: 4px;
+            background-color: #2d4739;
+            width: 60px;
+            margin: 5px auto 0;
+        }
+        
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .button {
+            width: 80%;
+            max-width: 300px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .primary-button {
+            background-color: #2d4739;
+            color: white;
+        }
+        
+        .secondary-button {
+            background-color: white;
+            color: #2d4739;
+            border: 2px solid #2d4739;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Back Button -->
+    <header class="header">
+        <div class="back-button">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+    </header>
+    
+    <!-- Artwork Display -->
+    <div class="artwork-container">
+        <div class="framed-artwork">
+            <div class="frame">
+                <div class="blue-border"></div>
+                <img src="/api/placeholder/400/400" alt="Ocean sunset view" class="artwork">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Artwork Information -->
+    <div class="artwork-info">
+        20 * 30 , 5.000тг
+    </div>
+    
+    <!-- Frame Options -->
+    <div class="frame-options">
+        <div class="frame-option-container">
+            <div class="frame-option">
+                <img src="/api/placeholder/50/50" alt="Gold frame">
+            </div>
+            <div class="frame-name">bf43</div>
+        </div>
+        
+        <div class="frame-option-container">
+            <div class="frame-option">
+                <img src="/api/placeholder/50/50" alt="Black frame">
+            </div>
+            <div class="frame-name">e9s</div>
+            <div class="selected-indicator"></div>
+        </div>
+        
+        <div class="frame-option-container">
+            <div class="frame-option">
+                <img src="/api/placeholder/50/50" alt="Light wood frame">
+            </div>
+            <div class="frame-name">d03h</div>
+        </div>
+        
+        <div class="frame-option-container">
+            <div class="frame-option">
+                <img src="/api/placeholder/50/50" alt="Beige frame">
+            </div>
+            <div class="frame-name">h345d</div>
+        </div>
+        
+        <div class="frame-option-container">
+            <div class="frame-option">
+                <img src="/api/placeholder/50/50" alt="Blue frame">
+            </div>
+            <div class="frame-name">wkk5</div>
+        </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="buttons-container">
+        <a href="#" class="button primary-button">Next</a>
+        <a href="#" class="button secondary-button">Experience in AR</a>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back button functionality
+            document.querySelector('.back-button').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            // Frame selection functionality
+            const frameOptions = document.querySelectorAll('.frame-option-container');
+            frameOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected indicator from all options
+                    document.querySelectorAll('.selected-indicator').forEach(indicator => {
+                        indicator.remove();
+                    });
+                    
+                    // Add selected indicator to clicked option
+                    const indicator = document.createElement('div');
+                    indicator.className = 'selected-indicator';
+                    this.appendChild(indicator);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
